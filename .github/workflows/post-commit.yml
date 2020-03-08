@@ -19,8 +19,6 @@ jobs:
 
     - name: Clone repository
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
 
     - name: Configure environment variable's
       run: |

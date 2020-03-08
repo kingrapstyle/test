@@ -1,10 +1,6 @@
-name: Docker Image CI
+name: CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
 
@@ -18,19 +14,19 @@ jobs:
 
     steps:
 
+    - name: Configure git
+      run: git config --global core.symlinks true
+
+    - name: Clone repository
+      uses: actions/checkout@v1
+
     - name: Environment (common)
       run: |
         echo $GITHUB_WORKSPACE
         echo ::set-env name=DENO_INSTALL::$HOME/.local/bin
         echo ::add-path::$DENO_INSTALL/third_party/prebuilt/linux64
-        echo DENO_INSTALL $DENO_INSTALL
-        echo PATH $PATH
-
-    - name: Configure git
-      run: git config --global core.symlinks true
-
-    - name: Clone repository
-      uses: actions/checkout@v2
+        echo DENO_INSTALL: $DENO_INSTALL
+        echo PATH: $PATH
 
     - name: Setup deno ${{ matrix.deno_version }} on ${{ matrix.os }}
       run: curl -fsSL https://deno.land/x/install/install.sh | sh -s ${{ matrix.deno_version }} && deno -h

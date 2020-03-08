@@ -31,7 +31,6 @@ jobs:
       run: |
         echo DENO_INSTALL: $DENO_INSTALL
         echo PATH: $PATH
-        ls -la $DENO_INSTALL
 
     - name: Setup deno ${{ matrix.deno_version }} on ${{ matrix.os }}
       run: curl -fsSL https://deno.land/x/install/install.sh | sh -s ${{ matrix.deno_version }} && deno -h

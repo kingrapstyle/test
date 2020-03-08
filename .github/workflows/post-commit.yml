@@ -12,7 +12,7 @@ jobs:
     name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     env:
-      deno: /home/runner/.local/bin/deno
+      deno: ${{ env.HOME }}/.local/bin/deno
     strategy:
       matrix:
         deno_version: ['v0.35.0']

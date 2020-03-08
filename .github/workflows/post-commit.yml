@@ -11,6 +11,8 @@ jobs:
       matrix:
         deno_version: ['v0.35.0']
         os: [ubuntu-latest, windows-latest, macOS-latest]
+    env:
+      DENO_INSTALL:  
 
     steps:
 
@@ -22,11 +24,11 @@ jobs:
 
     - name: Environment (common)
       run: |
-        echo $GITHUB_WORKSPACE
-        echo "set-env name=DENO_INSTALL::$HOME/.local/bin"
         echo "::set-env name=DENO_INSTALL::$HOME/.local/bin"
-        echo "add-path::$DENO_INSTALL/third_party/prebuilt/linux64"
         echo "::add-path::$DENO_INSTALL/third_party/prebuilt/linux64"
+
+    - name: Environment (echo)
+      run: |
         echo DENO_INSTALL: $DENO_INSTALL
         echo PATH: $PATH
 

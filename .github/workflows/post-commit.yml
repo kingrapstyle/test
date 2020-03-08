@@ -33,7 +33,9 @@ jobs:
         echo PATH: $PATH
 
     - name: Setup deno ${{ matrix.deno_version }} on ${{ matrix.os }}
-      run: curl -fsSL https://deno.land/x/install/install.sh | sh -s ${{ matrix.deno_version }} && deno -h
+      run: |
+        curl -fsSL https://deno.land/x/install/install.sh | sh -s ${{ matrix.deno_version }}
+        deno -h
 
     - name: Run deno test's
       run: deno test --allow-env

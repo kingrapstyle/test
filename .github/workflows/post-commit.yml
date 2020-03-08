@@ -11,6 +11,8 @@ jobs:
   build:    
     name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    env:
+      deno: ~/.local/bin/deno
     strategy:
       matrix:
         node_version: ['8', '10', '12']
@@ -20,7 +22,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Setup deno v0.35.0 on ${{ matrix.os }}
-      run: export PATH="/home/runner/.local/bin:${PATH}" && curl -fsSL https://deno.land/x/install/install.sh | sh -s v0.35.0 && deno -h
+      run: curl -fsSL https://deno.land/x/install/install.sh | sh -s v0.35.0 && $deno -h
 
     - name: Run deno test's
-      run: deno test --allow-env
+      run: $deno test --allow-env

@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       DENO_INSTALL: /home/runner/.local
-      deno: ${{ env.DENO_INSTALL }}/bin/deno
+      deno: /home/runner/.local/bin/deno
     strategy:
       matrix:
         node_version: ['8', '10', '12']

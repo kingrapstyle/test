@@ -20,7 +20,7 @@ jobs:
     - name: Clone repository
       uses: actions/checkout@v1
 
-    - name: Configure environment variables
+    - name: Configure environment variable's
       run: |
         echo "::set-env name=DENO_INSTALL::$HOME/.local"
         echo "::add-path::$HOME/.local/bin"

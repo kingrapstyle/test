@@ -25,7 +25,7 @@ jobs:
     - name: Environment (common)
       run: |
         echo "::set-env name=DENO_INSTALL::$HOME/.local/bin"
-        echo "::add-path::$DENO_INSTALL/third_party/prebuilt/linux64"
+        echo "::add-path::$HOME/.local/bin"
 
     - name: Environment (echo)
       run: |

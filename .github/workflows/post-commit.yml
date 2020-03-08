@@ -12,7 +12,8 @@ jobs:
     name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     env:
-      deno: ~/.local/bin/deno
+      DENO_INSTALL: /home/runner/.local
+      deno: ${{ env.DENO_INSTALL }}/bin/deno
     strategy:
       matrix:
         node_version: ['8', '10', '12']
